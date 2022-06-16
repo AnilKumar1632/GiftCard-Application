@@ -1,0 +1,63 @@
+<html>
+    <head>
+    <script>
+    function getvalue(){
+        var x=document.getElementById("cardvalue").value;
+        x = parseInt(x) + .05*x;
+        document.getElementById("commission").value = x;
+    }
+    </script>
+    </head>
+
+    <body>
+        <div class="container card col-sm-6 my-4 p-4">
+            <h2 class=" d-flex justify-content-center align-items-center ">Create New Order</h2>
+              <div class="row">
+                <div class="mb-3 col-sm-6">
+                    <label>Date: </label>
+                    <%= Time.now.strftime("%F")%>
+                </div>
+              </div>
+              <form method="POST" action="<%= register1_path %>">
+                <%= token_tag %>
+
+                <div class="mb-3 col-sm-6">
+                  <label for="firstname" class="form-label">First Name</label>
+                  <input type="text" class="form-control" name="firstname" id="firstname" >
+                </div>
+
+                <div class="mb-3 col-sm-6">
+                  <label for="lastname" class="form-label">Last Name</label>
+                  <input type="text" class="form-control" name="lastname" id="lastname" >
+                </div>
+                
+                <div class="mb-3 col-sm-6">
+                  <label for="cardvalue" class="form-label">Card Value</label>
+                  <input type="text" class="form-control" name="cardvalue" id="cardvalue"  onchange="getvalue()">
+                </div>
+
+                <div class="mb-3 col-sm-6">
+                  <label for="commission" class="form-label">Total Amount(including 5% commission)</label>
+                  <input type="text" class="form-control" name="totalAmount" id="commission" >
+                </div>
+                
+                <div class="mb-3 col-sm-6">
+                  <label for="mobilenumber" class="form-label">Mobile Number</label>
+                  <input type="text" class="form-control" id="mobilenumber" >
+                </div>
+                
+                <div class="mb-3 col-sm-6">
+                  <label for="address" class="form-label">Address</label>
+                  <input type="text" class="form-control"  id="address" >
+                </div>
+
+                <input type="hidden" class="form-control" name="userid" id="userid" value="<%= $current_user%>" >
+                  
+                <div class="mb-3 d-flex justify-content-center align-items-center">
+                <button type="submit" class="btn btn-dark">Place Order</button>
+                </div>
+
+              </form>
+        </div>
+    </body>
+</html>

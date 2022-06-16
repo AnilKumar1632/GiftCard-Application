@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <%= link_to 'Gift Card', root_path, class:"navbar-brand"%>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      </ul> 
+      <ul class="nav navbar-nav navbar-right px-4">
+        <li class="nav-item ">
+          <%= link_to 'SignUp', signup_path, class: ' btn btn-success' %>
+        </li>
+      </ul>  
+    </div>
+  </div>
+</nav>
+
+<% flash.each do |type, msg| %>
+  <% if msg==""%>
+    <div>
+    <%= msg %>
+    </div>
+  <% else %>
+  <div class="alert alert-warning text-center">
+    <%= msg %>
+  </div>
+  <% end %>
+<% end %>
+
+<div class="container card col-sm-4 my-4 p-4">
+  <h2 class="d-flex justify-content-center align-items-center">Admin Log In</h2>
+  <form method="POST" action="<%= checkadminlogin_path %>">
+  <%= token_tag %>
+    <div class="mb-3">
+      <label for="username">Username</label>
+      <input type="text" name="username" id="username" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" class="form-control" required>
+    </div>
+
+    <div class=" d-flex justify-content-right align-items-right">
+      <input type="submit" value="Login" class="btn btn-primary">
+    </div>
+  </form>
+</div>

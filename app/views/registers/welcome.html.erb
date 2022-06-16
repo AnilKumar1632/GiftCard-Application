@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+    }
+
+    .bg {
+      /* The image used */
+      background-image: url("https://images.squarespace-cdn.com/content/v1/535ee83de4b04c365eb2cfaa/1598889235824-BFYD8K7CSXOEA7SDJS82/Lyndigo+Spice.gif?format=1000w");
+
+      /* Full height */
+      height: 100%; 
+
+      /* Center and scale the image nicely */
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <%= link_to 'Gift Card', root_path, class:"navbar-brand"%>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            </ul>
+            
+
+
+            <ul class="nav navbar-nav navbar-right px-4">
+            <li class="nav-item m-1 ">
+                  <%= link_to 'SignUp', signup_path, class: ' btn btn-success' %>
+            </li>
+              <li class="nav-item m-1 ">
+                <%= link_to 'Login', logintype_path, class: ' btn btn-success' %>
+              </li>
+            </ul>     
+        </div>
+      </div>
+    </nav>  
+    <div  class="bg" >
+        <div class="text-center ">
+            <h1>Welcome to Gift Card App</h1><br/>
+            <%= link_to 'SignUp', signup_path, class: ' btn btn-primary' %><br/><br/><br/>
+            <%= link_to 'Login', logintype_path, class: ' btn btn-primary' %>
+        </div>
+    </div>
+  </body>
+</html>
+
+
+
+
+

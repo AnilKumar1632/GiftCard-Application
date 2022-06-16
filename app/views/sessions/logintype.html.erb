@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <%= link_to 'Gift Card', root_path, class:"navbar-brand"%>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      </ul> 
+      <ul class="nav navbar-nav navbar-right px-4">
+        <li class="nav-item ">
+          <%= link_to 'SignUp', signup_path, class: ' btn btn-success' %>
+        </li>
+      </ul>  
+    </div>
+  </div>
+</nav>
+
+
+<div class="text-center m-3">
+  <%= link_to 'Log In as Admin', adminlogin_path, class:"btn btn-primary"%>
+  <%= link_to 'Log In as Customer', signin_path, class:"btn btn-primary"%>                       
+</div>

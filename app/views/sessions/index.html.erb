@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <%= link_to 'Gift Card', root_path, class:"navbar-brand"%>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      </ul> 
+      <ul class="nav navbar-nav navbar-right px-4">
+        <li class="nav-item ">
+          <%= link_to 'SignUp', signup_path, class: ' btn btn-success' %>
+        </li>
+      </ul>  
+    </div>
+  </div>
+</nav>
+
+<% flash.each do |type, msg| %>
+  <% if msg==""%>
+    <div>
+    <%= msg %>
+    </div>
+  <% else %>
+  <div class="alert alert-warning text-center">
+    <%= msg %>
+  </div>
+  <% end %>
+<% end %>
+
+<div class="container card col-sm-4 my-4 p-4">
+  <h2 class="d-flex justify-content-center align-items-center">Sign In</h2>
+
+  <form method="POST" action="<%= login_path %>">
+  <%= token_tag %>
+
+    <div class="mb-3">
+      <label for="username" class="form-label">User Name</label>
+      <input type="text" class="form-control" name="username" id="username" placeholder="username" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" class="form-control" name="password" id="password" placeholder="password" required>
+    </div>
+
+    <div class="mb-3 text-end">
+      <input type="submit" value = "LogIn" class="btn btn-primary">
+    </div>
+
+  </form>
+</div>

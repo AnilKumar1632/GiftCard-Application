@@ -1,0 +1,72 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <%= link_to 'Gift Card', root_path, class:"navbar-brand"%>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item ">
+          <%= link_to 'Monthly Report', monthlyreport_path, class: ' btn btn-dark' %>
+        </li>
+        <li class="nav-item ">
+          <%= link_to 'Order History', adminhistory_path, class: ' btn btn-dark' %>
+        </li>
+      </ul> 
+      <ul class="nav navbar-nav navbar-right px-4">
+        <li class="nav-item ">
+          <%= link_to 'Log out', logout_path, class: ' btn btn-warning' %>
+        </li>
+      </ul>  
+    </div>
+  </div>
+</nav>
+
+
+
+
+<table class="table table-striped table-bordered table-hover">
+    <thead class="table-info">
+        <tr>
+            <th>Order Id </th>
+            <th>Recipient Name</th>
+            <th>Ordered Date </th>
+            <th>GiftCard Value</th>
+            <th>Commission(5%)</th>
+            <th>Delivery Status</th>
+            <th>username</th>
+            <th>Action</th>
+            <th colspan="3"></th>
+        </tr>
+    </thead> 
+    <tbody>
+        <div >
+            <% @total_commission=0 %>
+            <% @orders = Order.all%>
+            <% @registers = Register.all%>
+            <% @orders.each do |order| %>
+              
+              <tr>
+                <td><%=  order.orderid %></td>
+                <td><%= order.recipient_name%></td>
+                <td><%= order.ordered_date%></td>
+                <td><%= order.card_value%></td>
+                <td><%= order.commission%></td>
+                <% order.delivery_status%>
+                <td><%= order.delivery_status%></td>
+                <% x = Register.find_by(:id => order.user_id) %>
+                <td><%= x.username %></td>
+                <td><a href="orders/<%= order.orderid %>/edit" class="btn btn-primary">Mark Delivered</td>
+                <% @total_commission += order.commission %>
+              </tr>
+
+            <% end %>
+        </div>
+    </tbody>
+</table>
+
+<footer>
+    <h3>Total Commission:
+        <%= @total_commission %>
+    </h3>
+</footer>

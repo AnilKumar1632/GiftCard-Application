@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
+  <div class="container-fluid">
+    <%= link_to 'Gift Card', root_path, class:"navbar-brand"%>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item ">
+          <%= link_to 'New Order', placeorder_path, class: ' btn btn-dark' %>
+        </li>
+        <li class="nav-item ">
+          <%= link_to 'Order History', orderhistory_path, class: ' btn btn-dark' %>
+        </li>
+      </ul> 
+      <ul class="nav navbar-nav navbar-right px-4">
+        <li class="nav-item ">
+          <%= link_to 'Log out', logout_path, class: ' btn btn-dark' %>
+        </li>
+      </ul>  
+    </div>
+  </div>
+</nav>
+
+<table class="table table-striped table-bordered table-hover">
+ <thead class="table-primary">
+  <tr>
+    <th>Order Id </th>
+    <th>Recipient Name</th>
+    <th>Ordered Date </th>
+    <th>GiftCard Value</th>
+    <th>Commission(5%)</th>
+    <th>Delivery Status</th>
+    <th colspan="3"></th>
+  </tr>
+ </thead> 
+ <tbody>
+    <div >
+      <% @orders.each do |order| %>
+        <% if order.user_id == $current_user %>
+          <tr>
+            <td><%=  order.orderid %></td>
+            <td><%= order.recipient_name%></td>
+            <td><%= order.ordered_date%></td>
+            <td><%= order.card_value%></td>
+            <td><%= order.commission%></td>
+            <% order.delivery_status = "out for delivery"%>
+            <td><%= order.delivery_status%></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </div>
+ </tbody>
+</table>
+ 
